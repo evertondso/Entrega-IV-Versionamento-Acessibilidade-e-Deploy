@@ -1,7 +1,6 @@
 export function setupProjectModal() {
     const modalId = 'modal-projeto';
 
-    // Create modal DOM only once
     if (!document.getElementById(modalId)) {
         const modalHtml = `
         <div id="${modalId}" class="modal" role="dialog" aria-hidden="true" aria-labelledby="modal-title">
@@ -58,7 +57,7 @@ export function setupProjectModal() {
         bodyEl.innerHTML = body;
         modal.setAttribute('aria-hidden', 'false');
         modal.classList.add('open');
-        // move focus to the close button for accessibility
+
         closeBtn.focus();
         document.body.style.overflow = 'hidden';
     }
@@ -72,21 +71,18 @@ export function setupProjectModal() {
     closeBtn.removeEventListener('click', closeModal);
     closeBtn.addEventListener('click', closeModal);
 
-    // close on backdrop click
     modal.removeEventListener('click', modalBackdropHandler);
     function modalBackdropHandler(e) {
         if (e.target === modal) closeModal();
     }
     modal.addEventListener('click', modalBackdropHandler);
 
-    // close on Escape
     document.removeEventListener('keydown', escHandler);
     function escHandler(e) {
         if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
     }
     document.addEventListener('keydown', escHandler);
 
-    // Attach handlers to buttons (remove previous to avoid duplicates)
     const buttons = document.querySelectorAll('.btn-saiba-mais');
     buttons.forEach(btn => {
         const existing = btn._saibaMaisHandler;
@@ -101,5 +97,4 @@ export function setupProjectModal() {
     });
 }
 
-// keep default export optional
 export default setupProjectModal;

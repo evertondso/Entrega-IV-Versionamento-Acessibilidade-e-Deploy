@@ -3,16 +3,33 @@
 }
 
 :root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #dce9f4;
+  --text-primary: #0e62cf;
+  --text-secondary: #070707;
+  --accent-primary: #116c37;
+  --accent-secondary: #7bf87b;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --overlay-bg: rgba(0, 0, 0, 0.22);
+}
 
-  --cor-primaria: #116c37;      
-  --cor-secundaria: #7bf87b;    
-  --cor-terciaria: #e5e6e5;     
-  --cor-quaternaria: #1ea329;   
-  --cor-texto: #070707;         
-  --cor-fundo: #ffffff;         
-  --cor-alerta: #ff4c4c;        
-  --cor-sucesso: #4caf50;       
-  --cor-info: #2196f3;          
+[data-theme="dark"] {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --accent-primary: #7bf87b;
+  --accent-secondary: #116c37;
+  --card-bg: rgba(30, 30, 30, 0.95);
+  --card-shadow: rgba(0, 0, 0, 0.5);
+  --overlay-bg: rgba(0, 0, 0, 0.65);
+}
+
+:root {
+  --cor-alerta: #ff4c4c;
+  --cor-sucesso: #4caf50;
+  --cor-info: #2196f3;
 
   --fonte-principal: 'Montserrat', sans-serif;
   --fonte-titulo: 2.5rem;  
@@ -36,11 +53,12 @@
   body {
   font-family: var(--fonte-principal), 'Times New Roman', Times, serif;
   line-height: 1.8;
-  background-image: linear-gradient(rgba(0,0,0,0.22), rgba(0,0,0,0.22)), url('../imagens/lacos_azuis.png');
+  background-image: linear-gradient(var(--overlay-bg), var(--overlay-bg)), url('../imagens/lacos_azuis.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: #0e62cf;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   padding: 5px;
 }
 
@@ -48,7 +66,7 @@
     display: flex;
     margin: 10px 0;
     font-size: 2em;
-    color: #eaedf5;
+    color: var(--text-primary);
     text-align: center;
     font-weight: 700;
     line-height: 1.2;
@@ -57,7 +75,7 @@ header h1 {
     margin: 0;
 }
 nav a {
-    color: #e3e8f8;
+    color: var(--text-primary);
     margin: 0 15px;
     text-decoration: none;
     font-weight: 500;
@@ -111,11 +129,11 @@ nav li {
   }
 }
 section {
-    background-color: #dce9f4;
+    background-color: var(--bg-secondary);
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--card-shadow);
 
 } 
 .imagem-pequena img {
@@ -188,9 +206,9 @@ button:hover {
 
 
 .card {
-  background: var(--cor-fundo); 
+  background: var(--card-bg);
   border-radius: 16px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px var(--card-shadow);
   text-align: center;
   padding: 20px;
   max-width: 300px;
@@ -355,6 +373,33 @@ button:hover {
 }
 .modal-body p { margin-bottom: 12px; }
 .modal-body ul { margin-left: 20px; }
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--bg-secondary);
+}
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+section, .card {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
 
 .cards {
   display: flex;

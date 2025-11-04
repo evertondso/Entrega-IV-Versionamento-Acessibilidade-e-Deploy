@@ -21,7 +21,7 @@ function renderPage(template) {
         }
 
         if (window.location.hash === '#projetos') {
-            // initialize project modal handlers after projetos template is rendered
+
             try { setupProjectModal(); } catch (err) { console.error('Erro ao inicializar modal de projetos:', err); }
         }
     }
