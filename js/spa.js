@@ -22,13 +22,19 @@ function renderPage(template) {
 
         if (window.location.hash === '#projetos') {
 
-            try { setupProjectModal(); } catch (err) { console.error('Erro ao inicializar modal de projetos:', err); }
+            try {
+                console.log('Inicializando modal de projetos...');
+                setupProjectModal();
+            } catch (err) {
+                console.error('Erro ao inicializar modal de projetos:', err);
+            }
         }
     }
 }
 
 export function handleRoute() {
     const hash = window.location.hash; 
+    console.log('Mudança de rota para:', hash);
     
     const template = rotas[hash] || rotas['']; 
 

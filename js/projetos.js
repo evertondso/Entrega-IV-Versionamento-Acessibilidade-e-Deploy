@@ -19,6 +19,7 @@ export function setupProjectModal() {
     const closeBtn = modal.querySelector('.modal-close');
 
     function openModal(projectKey) {
+        console.log('Abrindo modal para projeto:', projectKey);
         let title = 'Projeto';
         let body = '<p>Detalhes sobre o projeto em breve.</p>';
 
@@ -53,10 +54,16 @@ export function setupProjectModal() {
             `;
         }
 
+        console.log('Conteúdo do modal:', { title, body: body.substring(0, 100) + '...' });
         titleEl.innerHTML = title;
         bodyEl.innerHTML = body;
         modal.setAttribute('aria-hidden', 'false');
         modal.classList.add('open');
+        console.log('Estado do modal:', {
+            display: window.getComputedStyle(modal).display,
+            visibility: window.getComputedStyle(modal).visibility,
+            classList: Array.from(modal.classList)
+        });
 
         closeBtn.focus();
         document.body.style.overflow = 'hidden';
@@ -92,6 +99,7 @@ export function setupProjectModal() {
             const key = btn.dataset.project || 'reforco-escolar';
             openModal(key);
         };
+        console.log('Configurando handler para botão:', btn.dataset.project);
         btn.addEventListener('click', handler);
         btn._saibaMaisHandler = handler;
     });

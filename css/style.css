@@ -238,12 +238,16 @@ button:hover {
 
 .card .badge {
   display: inline-block;
-  background: var(--cor-primaria);
+  background: var(--accent-primary);
   color: white;
   border-radius: 10px;
   padding: 5px 10px;
   font-size: var(--fonte-pequena);
   margin-bottom: 10px;
+}
+
+.badge-saude {
+  background-color: #ff6b6b !important;
 }
 
 .card button {
@@ -353,8 +357,8 @@ button:hover {
 }
 .modal.open { display: flex; }
 .modal-inner {
-  background: #fff;
-  color: var(--cor-texto);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   max-width: 800px;
   width: 100%;
   border-radius: 12px;
@@ -386,7 +390,13 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: var(--bg-secondary);
+    box-shadow: 0 2px 8px var(--card-shadow);
 }
 
 .theme-toggle:hover {
